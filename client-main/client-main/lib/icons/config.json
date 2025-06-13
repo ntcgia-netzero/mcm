@@ -1,0 +1,54 @@
+{
+  "name": "",
+  "css_prefix_text": "",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "971842913945f59c7f3cf11e75e1e4f1",
+      "css": "flash-outline",
+      "code": 59392,
+      "src": "typicons"
+    },
+    {
+      "uid": "e5ff9e811d382226441bbfe7186b510e",
+      "css": "user_friends",
+      "code": 62720,
+      "src": "fontawesome5"
+    },
+    {
+      "uid": "1d9b8bb9fadde5c707c4b660d743f174",
+      "css": "snowflake",
+      "code": 62172,
+      "src": "fontawesome5"
+    },
+    {
+      "uid": "554ee96588a6c9ee632624cd051fe6fc",
+      "css": "chart-pie",
+      "code": 59397,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "e9f1a4b2968111eab72aacfdce5a3d9f",
+      "css": "flame",
+      "code": 62318,
+      "src": "octicons"
+    },
+    {
+      "uid": "68abaaa5962de61b4600bf95fba61518",
+      "css": "lightning",
+      "code": 59393,
+      "src": "custom_icons",
+      "selected": false,
+      "svg": {
+        "path": "M622.3 133.1C625.9 109.1 615.8 104.4 599.8 122.6L254.9 515.2C238.9 533.3 245.7 548.2 269.9 548.2H401.1C425.3 548.2 440.5 567.5 434.8 591L366.5 874C360.9 897.6 369.7 902.3 386.2 884.6L758.8 484.4C775.3 466.7 769 452.2 744.8 452.2H618.3C594.1 452.2 577.2 432.7 580.8 408.7L622.3 133.1Z",
+        "width": 1000
+      },
+      "search": [
+        "lightning"
+      ]
+    }
+  ]
+}
