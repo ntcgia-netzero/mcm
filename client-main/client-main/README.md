@@ -14,3 +14,23 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+- home_page
+- year_menu
+- edit (所有的編輯都在一頁)
+## Lobby
+- lobby_page
+- register_page
+- input_widget
+## Home (tabs)
+- electricity_page (copy)
+- employee_page (copy)
+- fuels_page (copy)
+- refrigerant_page
+- dashboard_page
+
+## Widgets
+- bar chart
+- table
+- navbar
+- loading mask

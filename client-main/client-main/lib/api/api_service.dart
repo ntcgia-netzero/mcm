@@ -9,10 +9,10 @@ class ApiService {
   // final String _baseUrl = 'http://10.0.2.2:8080';
 
   // 本地 ios
-  // final String _baseUrl = 'http://127.0.0.1:8080';
+  final String _baseUrl = 'http://127.0.0.1:8080';
 
   // RunServer
-  final String _baseUrl = 'http://13.115.212.233:8080';
+  // final String _baseUrl = 'http://13.115.212.233:8080';
 
   Future<ApiModel> deleteUser({
     required int userId,
