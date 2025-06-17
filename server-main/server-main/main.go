@@ -1,14 +1,17 @@
 package main
 
+// 伺服器入口程式，負責初始化資料庫與路由後啟動服務
+
 import (
-	"MCM/database"
-	"MCM/router"
-	"github.com/gin-gonic/gin"
+	"MCM/database"             // 資料庫連線及模型
+	"MCM/router"               // 路由設定
+	"github.com/gin-gonic/gin" // gin web framework
 )
 
 func main() {
 	// 建立 DB 連線
 	db := database.Connect()
+	// 自動建立/更新資料表
 	if err := database.MigrateDB(db); err != nil {
 		panic(err)
 	}

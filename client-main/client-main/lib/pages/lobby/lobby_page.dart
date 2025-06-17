@@ -4,12 +4,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mcm_app/api/api_public_service.dart';
 import 'package:mcm_app/api/models/api_public_model.dart';
+
+// 登入頁面，提供帳號密碼輸入及註冊連結
 import 'package:mcm_app/pages/home/edit/widgets/edit_page_input.dart';
 import 'package:mcm_app/pages/home/home_page.dart';
 import 'package:mcm_app/pages/lobby/register_page.dart';
 import 'package:mcm_app/storages/user_storage.dart';
 import 'package:mcm_app/widgets/loading_mask.dart';
 
+// LobbyPage 為使用者登入介面
 class LobbyPage extends StatefulWidget {
   const LobbyPage({super.key});
 
@@ -19,6 +22,7 @@ class LobbyPage extends StatefulWidget {
   }
 }
 
+// 狀態類別，處理登入流程與表單檢查
 class LobbyPageState extends State<LobbyPage> {
   final ApiPublicService apiPublicService = ApiPublicService();
 
@@ -39,6 +43,7 @@ class LobbyPageState extends State<LobbyPage> {
     super.dispose();
   }
 
+  // 檢查表單輸入是否正確
   bool checkForm() {
     if (_accountController.text.isEmpty) {
       setState(() {
@@ -59,6 +64,7 @@ class LobbyPageState extends State<LobbyPage> {
     return true;
   }
 
+  // 執行登入流程，向後端取得 token
   Future<void> login() async {
     setState(() {
       isLoading = true;

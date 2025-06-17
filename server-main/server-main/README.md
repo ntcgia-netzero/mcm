@@ -1,1 +1,11 @@
-# yiijwu_server
+# server-main
+
+此資料夾為後端 Go 伺服器專案。
+
+## 主要目錄說明
+
+- `database/`：使用 GORM 定義的資料表模型與資料庫連線設定。
+- `router/`：使用 gin-gonic 建立的 API 路由。
+- `main.go`：程式進入點，初始化資料庫與路由後啟動伺服器。
+
+啟動伺服器前請先確認 `go.mod` 依賴已安裝，並且資料庫連線設定符合環境。

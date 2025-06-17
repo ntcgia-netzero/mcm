@@ -1,5 +1,7 @@
 package util
 
+// 提供 JWT 驗證與密碼雜湊等工具函式
+
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
@@ -9,8 +11,9 @@ import (
 	"time"
 )
 
+// GenerateJWTToken 根據使用者 ID 產生 JWT token
 func GenerateJWTToken(userId string) (string, error) {
-	secretKey := []byte("yiijwu_is_best!")
+	secretKey := []byte("yiijwu_is_best!") // 加密用的密鑰
 
 	token := jwt.New(jwt.SigningMethodHS256)
 
@@ -26,6 +29,7 @@ func GenerateJWTToken(userId string) (string, error) {
 	return tokenString, nil
 }
 
+// AuthMiddleware 驗證 JWT 是否有效的中介層
 func AuthMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		secretKey := []byte("yiijwu_is_best!")
@@ -70,6 +74,7 @@ func AuthMiddleware() gin.HandlerFunc {
 	}
 }
 
+// CheckUserId 檢查上下文中的 userId 是否與參數一致
 func CheckUserId(c *gin.Context, userId string) bool {
 	if c.GetString("userId") != userId {
 		FailedResponse(c, -1, "UserId not match")
@@ -79,11 +84,13 @@ func CheckUserId(c *gin.Context, userId string) bool {
 	return true
 }
 
+// HashPassword 將密碼雜湊後回傳
 func HashPassword(password string) (string, error) {
 	bytes, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	return string(bytes), err
 }
 
+// CheckPasswordHash 驗證密碼與雜湊值是否相符
 func CheckPasswordHash(password, hash string) bool {
 	err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password))
 	return err == nil
