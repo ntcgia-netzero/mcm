@@ -34,3 +34,7 @@ samples, guidance on mobile development, and a full API reference.
 - table
 - navbar
 - loading mask
+
++ 忘記密碼
++ 註冊流程
++ 保持登入
