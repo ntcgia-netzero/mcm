@@ -23,7 +23,7 @@ export default function EntryScreen() {
 
         // Redirect
         const timer = setTimeout(() => {
-            router.replace('/test/test08');
+            router.replace('/main');
         }, 3000);
 
         return () => clearTimeout(timer);
