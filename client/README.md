@@ -1,7 +1,4 @@
-# Expo Template
-
-## Setup
-
-```bash
-npx expo start
-```
+# Expo Project
+## 前端技術點
+- drawer + tabs
+- 

@@ -20,10 +20,5 @@ export default function RootLayout() {
         return null;
     }
     // -------------- //
-    return (
-        <View className='flex-1'>
-            <Slot />
-            {/* <StatusBar style="auto" /> */}
-        </View>
-    );
+    return <Slot />
 }

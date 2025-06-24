@@ -3,19 +3,19 @@ import sqlite3
 db_path = "mcm.db"
 SCRIPT = """
 PRAGMA foreign_keys = ON;
-CREATE TABLE user (
+CREATE TABLE IF NOT EXISTS user (
     user_id      INTEGER PRIMARY KEY AUTOINCREMENT,
     account      TEXT UNIQUE NOT NULL,
     password     TEXT NOT NULL
 );
 
-CREATE TABLE electricity (
+CREATE TABLE IF NOT EXISTS electricity (
     user_id                  INTEGER,
     year                     INTEGER,
     month                    INTEGER CHECK (month BETWEEN 1 AND 12),
     consumption              REAL CHECK (consumption >= 0),
     PRIMARY KEY (user_id, year, month),
-    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+    FOREIGN KEY (user_id) REFERENCES user(user_id) ON DELETE CASCADE
 );
 """
 
