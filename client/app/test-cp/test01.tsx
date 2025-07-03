@@ -1,147 +1,104 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, ActivityIndicator, ScrollView } from 'react-native';
+import React, { useState } from 'react'
+import {
+    View,
+    Text,
+    TextInput,
+    Pressable,
+    Alert,
+    ActivityIndicator,
+    ScrollView,
+} from 'react-native'
 
 export default function Login() {
-    const [account, setAccount] = useState('');
-    const [password, setPassword] = useState('');
-    const [accountError, setAccountError] = useState(null);
-    const [passwordError, setPasswordError] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [account, setAccount] = useState('')
+    const [password, setPassword] = useState('')
+    const [accountError, setAccountError] = useState<string | null>(null)
+    const [passwordError, setPasswordError] = useState<string | null>(null)
+    const [loading, setLoading] = useState(false)
 
     const checkForm = () => {
         if (!account.trim()) {
-            setAccountError('帳號不可為空');
-            setLoading(false);
-            return false;
+            setAccountError('帳號不可為空')
+            setLoading(false)
+            return false
         }
 
         if (!password.trim()) {
-            setPasswordError('密碼不可為空');
-            setLoading(false);
-            return false;
+            setPasswordError('密碼不可為空')
+            setLoading(false)
+            return false
         }
 
-        return true;
-    };
+        return true
+    }
 
     const login = () => {
-        setLoading(true);
-        setAccountError(null);
-        setPasswordError(null);
+        setLoading(true)
+        setAccountError(null)
+        setPasswordError(null)
 
-        if (!checkForm()) return;
+        if (!checkForm()) return
 
-        // Network call removed. Only show success message.
         setTimeout(() => {
-            setLoading(false);
-            Alert.alert('Login', 'Login pressed');
-        }, 1000);
-    };
+            setLoading(false)
+            Alert.alert('Login', 'Login pressed')
+        }, 1000)
+    }
 
     return (
-        <ScrollView contentContainerStyle={styles.container}>
-            <View style={styles.logoContainer}>
-                <Text style={styles.logoText}>Micro</Text>
-                <Text style={styles.logoText}>Carbon</Text>
-                <Text style={styles.logoText}>Management</Text>
-            </View>
-            <View style={styles.form}>
-                <View style={styles.inputGroup}>
-                    <Text style={styles.label}>帳號</Text>
+        <ScrollView className="flex-1 bg-white" contentContainerStyle={{ flexGrow: 1 }}>
+
+
+            <View className="w-full px-10 items-center">
+                <View className="w-full mt-10">
+                    <Text className="text-base font-semibold">帳號</Text>
                     <TextInput
-                        style={styles.input}
+                        className="h-10 bg-gray-200 rounded-lg px-3 mt-2"
                         value={account}
                         onChangeText={setAccount}
                     />
-                    {accountError && <Text style={styles.error}>{accountError}</Text>}
+                    {accountError && (
+                        <Text className="text-red-500 mt-1">{accountError}</Text>
+                    )}
                 </View>
-                <View style={[styles.inputGroup, { marginTop: 20 }]}>
-                    <Text style={styles.label}>密碼</Text>
+
+                <View className="w-full mt-6">
+                    <Text className="text-base font-semibold">密碼</Text>
                     <TextInput
-                        style={styles.input}
+                        className="h-10 bg-gray-200 rounded-lg px-3 mt-2"
                         value={password}
                         onChangeText={setPassword}
                         secureTextEntry
                     />
-                    {passwordError && <Text style={styles.error}>{passwordError}</Text>}
+                    {passwordError && (
+                        <Text className="text-red-500 mt-1">{passwordError}</Text>
+                    )}
                 </View>
-                <View style={{ marginTop: 60 }}>
-                    <TouchableOpacity style={styles.buttonBlue} onPress={login} disabled={loading}>
-                        {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.buttonText}>登入</Text>}
-                    </TouchableOpacity>
+
+                <View className="mt-14">
+                    <Pressable
+                        className={`w-36 h-12 rounded-full items-center justify-center ${loading ? 'bg-blue-300' : 'bg-blue-500'
+                            }`}
+                        onPress={login}
+                        disabled={loading}
+                    >
+                        {loading ? (
+                            <ActivityIndicator color="#fff" />
+                        ) : (
+                            <Text className="text-white text-lg font-semibold">登入</Text>
+                        )}
+                    </Pressable>
                 </View>
-                <View style={{ marginTop: 20 }}>
-                    <TouchableOpacity style={styles.buttonGray} onPress={() => Alert.alert('Register', 'Register pressed')}>
-                        <Text style={styles.buttonText}>註冊</Text>
-                    </TouchableOpacity>
+
+                <View className="mt-5">
+                    <Pressable
+                        className="w-36 h-12 bg-gray-500 rounded-full items-center justify-center"
+                        onPress={() => Alert.alert('Register', 'Register pressed')}
+                    >
+                        <Text className="text-white text-lg font-semibold">註冊</Text>
+                    </Pressable>
                 </View>
             </View>
         </ScrollView>
-    );
+    )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flexGrow: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center'
-    },
-    logoContainer: {
-        height: 300,
-        width: '100%',
-        backgroundColor: '#448fda',
-        justifyContent: 'space-between',
-        alignItems: 'flex-start',
-        paddingVertical: 50,
-        paddingHorizontal: 25
-    },
-    logoText: {
-        color: '#fff',
-        fontSize: 45,
-        fontWeight: '900'
-    },
-    form: {
-        width: '100%',
-        paddingHorizontal: 40,
-        alignItems: 'center'
-    },
-    inputGroup: {
-        alignSelf: 'stretch'
-    },
-    label: {
-        fontSize: 15,
-        fontWeight: '600'
-    },
-    input: {
-        height: 40,
-        backgroundColor: '#efefef',
-        borderRadius: 8,
-        paddingHorizontal: 10,
-        marginTop: 10
-    },
-    error: {
-        color: 'red',
-        marginTop: 4
-    },
-    buttonBlue: {
-        width: 150,
-        height: 50,
-        backgroundColor: '#448fda',
-        borderRadius: 25,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    buttonGray: {
-        width: 150,
-        height: 50,
-        backgroundColor: '#808080',
-        borderRadius: 25,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    buttonText: {
-        color: '#fff',
-        fontSize: 20,
-        fontWeight: '600'
-    }
-});

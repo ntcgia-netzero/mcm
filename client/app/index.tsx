@@ -23,11 +23,11 @@ export default function EntryScreen() {
 
         // Redirect
         const timer = setTimeout(() => {
-            router.replace('/home');
-        }, 3000);
+            router.replace('/login');
+        }, 2000);
 
         return () => clearTimeout(timer);
-    }, []);
+    }, [router, opacity, scale]);
 
     const animatedStyle = useAnimatedStyle(() => ({
         opacity: opacity.value,
@@ -38,7 +38,7 @@ export default function EntryScreen() {
         <View className="flex-1 bg-white items-center justify-center">
             <Animated.Text
                 style={animatedStyle}
-                className="text-4xl text-blue-400 tracking-widest text-center"
+                className="text-3xl text-blue-400 tracking-widest text-center"
             >
                 <Text className="text-5xl font-bold">M</Text>icro
                 <Text className="text-5xl font-bold">C</Text>arbon
