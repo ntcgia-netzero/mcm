@@ -143,7 +143,7 @@ const EditModal = ({ isVisible, onClose, onSubmit, value }: { isVisible: boolean
     </Modal>
 );
 
-export default function ElectricityPage() {
+export default function ElectricityScreen() {
     const [values, setValues] = useState(Array(12).fill("")); // TODO
     const [included, setIncluded] = useState(Array(12).fill(true));
     // Modal
